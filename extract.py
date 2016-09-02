@@ -19,7 +19,7 @@ file = open("u.data","r")
 records = []
 for i in range(100000):
 	records.append(file.readline().rstrip().split("\t"));
-file2 = open("records.pickle","wb")
+file2 = open("dumps/records.pickle","wb")
 pickle.dump(records,file2);
 file2.close()
 
@@ -35,7 +35,7 @@ for i in records:
 	if( i[0] not in user_movies):
 		user_movies[i[0]] = list()
 	user_movies[i[0]].append(i[1])
-user_movies_dump = open("user_movies.pickle","wb")
+user_movies_dump = open("dumps/user_movies.pickle","wb")
 pickle.dump(user_movies,user_movies_dump)
 user_movies_dump.close()
 
@@ -44,7 +44,7 @@ user_vs_movie = [[0 for x in range(1682)] for y in range(943)]
 for i in records:
 	user_vs_movie[i[0]-1][i[1]-1] = i[2]
 
-user_vs_movie_dump = open("user_vs_movie.pickle","wb")
+user_vs_movie_dump = open("dumps/user_vs_movie.pickle","wb")
 pickle.dump(user_vs_movie,user_vs_movie_dump)
 user_vs_movie_dump.close()
 print "Time:",time.time() - start_time
