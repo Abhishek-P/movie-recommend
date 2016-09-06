@@ -1,2 +1,3 @@
 #To-Do : 
-## Average co-rate count
+## Basic recommendation algo
+## Additional recommendation algo

@@ -1,0 +1,2 @@
+Average co-rating count:29
+Time: 6.76599979401
