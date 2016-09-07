@@ -16,9 +16,14 @@ movie_corate_matrix = [[0 for x in range(1682)] for y in range(1682)]
 
 user_movies = pickle.load(open("dumps/user_movies.pickle","rb"))
 for i in user_movies:
-	for j in range(1,len(user_movies[i])):
-		temp = user_movies[i]
-		movie_corate_matrix[temp[0]-1][temp[j]-1] = movie_corate_matrix[temp[0]-1][temp[j]-1] + 1
+	temp = user_movies[i]
+	for j in range(len(temp)):
+		for k in range(j+1,len(temp)):
+			movie_corate_matrix[temp[j]-1][temp[k]-1] = movie_corate_matrix[temp[j]-1][temp[k]-1] + 1
+			movie_corate_matrix[temp[k]-1][temp[j]-1] = movie_corate_matrix[temp[j]-1][temp[k]-1]
+for i in range(10):
+	print movie_corate_matrix[i][:10]
+			
 		
 movie_corate_matrix_dump = open("dumps/movie_corate_matrix.pickle","wb")
 pickle.dump(movie_corate_matrix,movie_corate_matrix_dump)
