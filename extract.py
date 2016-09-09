@@ -11,6 +11,8 @@ We need a persisitent way to store these values since the size is vast
 Current choices are RDBMS and Pickle dump
 The program uses pickle dump
 Since python is 0-indexed, -1 should be used while indexing
+
+Generating the movie_count as list and pickling
 @author : Abhishek P, Bharath Kashyapa, Akshay A Malpani """
 import time
 import pickle
@@ -31,13 +33,18 @@ for i in records:
 
 # the user vs movies list 
 user_movies = {}
+movie_count = [0 for x in range(1682)]
 for i in records:
 	if( i[0] not in user_movies):
 		user_movies[i[0]] = list()
 	user_movies[i[0]].append(i[1])
+	movie_count[i[1]-1] = movie_count[i[1]-1] + 1
 user_movies_dump = open("dumps/user_movies.pickle","wb")
 pickle.dump(user_movies,user_movies_dump)
 user_movies_dump.close()
+
+with open("dumps/movie_count.pickle", "wb") as movie_count_dump:
+	pickle.dump(movie_count,movie_count_dump)
 
 #generating the user vs movie matrix with 0 or ratings at user id, movie id
 user_vs_movie = [[0 for x in range(1682)] for y in range(943)]
