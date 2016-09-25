@@ -1,0 +1,12 @@
+May need this in future
+How to collect posters and details with links/name
+
+https://stackoverflow.com/questions/151272/given-an-imdb-movie-id-how-do-i-programmatically-get-its-poster-image
+https://graph.facebook.com/?ids=http://www.imdb.com/title/tt2404435
+https://www.omdbapi.com/?t=godfather
+https://stackoverflow.com/questions/275683/how-do-you-get-a-thumbnail-of-a-movie-using-imdbpy
+https://github.com/minhnhut/imdb-getter-php
+https://omdbapi.com/
+https://www.themoviedb.org/documentation/api
+https://imdbapi.poromenos.org/
+
