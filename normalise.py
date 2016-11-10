@@ -13,7 +13,7 @@ for i in range(len(norm_mm)):
                for j in range(i+1,len(norm_mm)):
                    if movie_corate_matrix!=0 and movie_corate_matrix[i][j]!=0:
                        norm_mm[i][j]=movie_movie[i][j]/float(movie_corate_matrix[i][j])
-                       norm_mm[i][j]=format(norm_mm[i][j], '.4f')
+                       norm_mm[i][j]=float(format(norm_mm[i][j], '.4f'))
 norm_movie_dump = open("dumps/norm_movie.pickle","wb")
 pickle.dump(norm_mm,norm_movie_dump)
 norm_movie_dump.close()
