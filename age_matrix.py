@@ -16,7 +16,7 @@ for i in range(len(user_movie)):
 			pass
 for i in range(len(age_aggr)):
 	age_aggr[i]=age_aggr[i]/float(no_viewers[i])
-	age_aggr[i]=format(age_aggr[i], '.2f')
+	age_aggr[i]=float(format(age_aggr[i], '.2f'))
 
 norm_movie_dump = open("dumps/avg_age.pickle","wb")
 pickle.dump(age_aggr,norm_movie_dump)
