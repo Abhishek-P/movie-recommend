@@ -1,4 +1,4 @@
-import pickle
+jimport pickle
 with open("dumps/user_vs_movie.pickle","rb") as user_movie_matrix_dump:
 		user_movie=pickle.load(user_movie_matrix_dump)
 

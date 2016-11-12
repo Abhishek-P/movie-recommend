@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<meta name = "viewport" content = "device-width=screen-width, initial-scale=1.0"/>
+	<link href = "bootstrap/css/bootstrap.min.css" rel  = "stylesheet"/>
+    <link href = "css/login.css" rel  = "stylesheet"/>
+    
+	<script src = "jquery_224.js" type = "text/javascript" ></script>
+	<script src = "bootstrap/js/bootstrap.min.js" type = "text/javascript" ></script>
+	<title>
+	Movie Page
+	</title>
+	<script>
+	function setUser(event)
+	{
+		console.log("here");
+		$("div#movie_choice").attr({"hidden":false});
+		val = $.post("/set/user",{"id": $("input#user_id").val()})
+		$("div#user_choice").attr({"hidden": true});
+		console.log("here2");
+	}
+	function setMovie(event)
+	{
+	}
+	</script>
+</head>	
+<body>
+<div class = "container" id = "container-1" >
+	<div class = "row well" id = "userDetails" >
+	<h4>User Details:</h4>
+		<dl class = "dl-horizontal" id = "user">
+		<dt> Id: </dt><dd id = "user_id"></dd>
+		<dt> Age: </dt><dd id = "user_age"></dd>
+		</dl>
+	</div>
+	<div class = "row well" id = "movieDetails"  >
+	<h4>Movie Details:</h4>
+		<dl class = "dl-horizontal" id = "movie">
+			<dt class =""> Id:  </dt> <dd id = "movie_id"></dd>
+			<dt class = ""> Name: </dt><dd id = "movie_name"></dd>
+			<dt class = "">Viewed by . users:</dt><dd id = "movie_users"></dd>
+			<dt class = "">Avg. Rating:</dt><dd id = "movie_avg_rating"></dd>
+			<dt class = "">Curr. users  Rating :</dt><dd id = "movie_rating"></dd>
+		</dl>
+	
+	</div>
+	
+	<div class = "row " id = "user_choice">
+		<span class = ""> Enter User Id ( 1 to 943 ): </span>
+		<input type = "number" id = "user_id" min = "1" max = "943"/>	
+		<input type = "button" id = "choose_user" value = "select" onclick = "setUser(event);"/>
+	</div>
+	<div class = "row" id = "movie_choice" hidden>
+		<span class = ""> Enter User Id ( 1 to 1682 ): </span>
+		<select id = "movies_watched">
+		</select>
+	</div>	
+</div>
+</body>
+</html>

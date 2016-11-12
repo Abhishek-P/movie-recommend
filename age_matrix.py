@@ -10,14 +10,12 @@ no_viewers=[0]*1682
 for i in range(len(user_movie)):
 	for j in range(len(user_movie[i])):
 		if user_movie[i][j]!=0:
-			age_aggr[j]+=uage[i]
+			age_aggr[j] += uage[i]
 			no_viewers[j]+=1
 		else:	
 			pass
 for i in range(len(age_aggr)):
 	age_aggr[i]=age_aggr[i]/float(no_viewers[i])
-	age_aggr[i]=format(age_aggr[i], '.2f')
-
 norm_movie_dump = open("dumps/avg_age.pickle","wb")
 pickle.dump(age_aggr,norm_movie_dump)
 norm_movie_dump.close()
