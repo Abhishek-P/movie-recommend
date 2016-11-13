@@ -29,7 +29,7 @@ def ranking(user_id):
 		score[i] += float(occupation_movie[i-1][user_details[user_id]["occupation"]])/(items[i]["males"] + items[i]["females"])
 		score[i] += avg_rating[i - 1]/5
 		score[i] += float(val)/(items[i]["males"] + items[i]["females"])
-		score[i] += float(2)/abs(avg_age[i-1] - user_details[user_id]["age"])
+		score[i] += float(1)/abs(avg_age[i-1] - user_details[user_id]["age"])
 		#print score[i]
 		
 	ranked_list = []
