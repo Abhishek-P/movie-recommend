@@ -26,7 +26,7 @@ for i in range(len(user_movie)):
 	for j in range(len(user_movie[i])):
 		if user_movie[i][j]!=0:
 			tosort.append((j,user_movie[i][j]))
-	x=sorted(tosort,key=lambda student: student[1],reverse=True)
+	x = sorted(tosort,key=lambda student: student[1],reverse=True)
 	baselist.append(x[:40])
 for k in baselist:
         print k,"\n"

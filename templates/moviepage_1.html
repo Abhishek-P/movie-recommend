@@ -14,14 +14,48 @@
 	<script>
 	function setUser(event)
 	{
-		console.log("here");
-		$("div#movie_choice").attr({"hidden":false});
-		val = $.post("/set/user",{"id": $("input#user_id").val()})
+		console.log("setUser()");
+		val = $.post("/set/user",{"id": $("#user_id_input").val()},setUserDetails)
 		$("div#user_choice").attr({"hidden": true});
-		console.log("here2");
+		//console.log(val);
+		//console.log("here2");
 	}
-	function setMovie(event)
+	function setUserDetails(data)
 	{
+		console.log("setUserDetails()");
+		user_id = $("#user_id_input").val();
+		data  = JSON.parse(data);
+		$("dd#user_id").html(user_id);
+		$("dd#user_age").html(data.age);
+		$("dd#user_gender").html(data.gender);
+		$("dd#user_occupation").html(data.occupation);
+		getSets();
+	}
+	function getSets()
+	{
+		console.log("getSets()");
+		$.getJSON("/get/sets", null ,showSets);
+		
+	}
+	function showSets(data)
+	{
+		console.log("showSets()");
+		$("ul#candidate_set").attr({"hidden":false});
+		candidate_set = data[0];
+		ranked_set = data[1];
+		for( i = 0 ; i < candidate_set.length ; i++)
+		{
+			
+			$("ul#candidate_set").html( $("ul#candidate_set").html() + "<li class = 'list-group-item'>"+candidate_set[i]+"</li>");
+		}
+		$("dl#ranked_set").attr({"hidden":false});
+		for( i = 0 ; i < ranked_set.length ; i++)
+		{
+			
+			$("dl#ranked_set").html( $("dl#ranked_set").html() + "<dt class = 'list-group-item'>"+ranked_set[i][0]+"</dt><dd class = 'list-group-item'>"+ranked_set[i][1]+"</dd>");
+		}
+		
+		
 	}
 	</script>
 </head>	
@@ -32,30 +66,27 @@
 		<dl class = "dl-horizontal" id = "user">
 		<dt> Id: </dt><dd id = "user_id"></dd>
 		<dt> Age: </dt><dd id = "user_age"></dd>
+		<dt> Gender: </dt><dd id = "user_gender"> </dd>
+		<dt> Occupation </dt> <dd id = "user_occupation"></dd>
 		</dl>
-	</div>
-	<div class = "row well" id = "movieDetails"  >
-	<h4>Movie Details:</h4>
-		<dl class = "dl-horizontal" id = "movie">
-			<dt class =""> Id:  </dt> <dd id = "movie_id"></dd>
-			<dt class = ""> Name: </dt><dd id = "movie_name"></dd>
-			<dt class = "">Viewed by . users:</dt><dd id = "movie_users"></dd>
-			<dt class = "">Avg. Rating:</dt><dd id = "movie_avg_rating"></dd>
-			<dt class = "">Curr. users  Rating :</dt><dd id = "movie_rating"></dd>
-		</dl>
-	
 	</div>
 	
 	<div class = "row " id = "user_choice">
 		<span class = ""> Enter User Id ( 1 to 943 ): </span>
-		<input type = "number" id = "user_id" min = "1" max = "943"/>	
+		<input type = "number" id = "user_id_input" min = "1" max = "943"/>	
 		<input type = "button" id = "choose_user" value = "select" onclick = "setUser(event);"/>
 	</div>
-	<div class = "row" id = "movie_choice" hidden>
-		<span class = ""> Enter User Id ( 1 to 1682 ): </span>
-		<select id = "movies_watched">
-		</select>
-	</div>	
+	
+	<div class = "row" id = "sets" > 
+		
+		<ul class = "list-group col-xs-6" id = "candidate_set" hidden>
+		<h4>Candidate Set:</h4>
+		</ul>
+		<dl class = "dl-horizontal list-group col-xs-6" id = "ranked_set" hidden>
+		<h4>Ranked Set - Scored</h4>
+			<dt>Movie Id:</dt><dd>Score:</dd>
+		</dl>
+	</div>
 </div>
 </body>
 </html>

@@ -5,22 +5,16 @@ Created on Sat Nov 12 21:29:31 2016
 @author: Abhishek P Taula
 """
 
-import trans_clos
 import pickle
 import time
+import ranking_1
 start_time = time.time()
-all_closure = []
-total = 0
-for i in range(1682):
+ranked_sets = dict()
+for i in range(943):
 	print i
-	result = trans_clos.trans_closure(i+1)
-	all_closure.append(result)
-	total += len(result)
+	ranked_sets[i+1] = ranking_1.ranking(i+1)
 
-total = float(total)/1682
-print "avg_size:",total
-
-with open("dumps/all_closure_list.pickle","wb") as dump:
-	pickle.dump(all_closure,dump)
-	
+with open("dumps/ranked_sets.pickle","wb") as dump:
+	pickle.dump(ranked_sets,dump)
 print "Time:",time.time() - start_time
+	
