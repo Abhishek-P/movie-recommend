@@ -6,6 +6,7 @@ import json
 import ranking_1
 
 app = Flask(__name__, static_url_path = "")
+
 items = pickle.load(open("dumps/items.pickle","rb"))
 users = pickle.load(open("dumps/user.pickle","rb"))
 user_id = None

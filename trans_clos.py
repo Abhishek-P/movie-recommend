@@ -33,9 +33,11 @@ def trans_closure(uid):
 	    if lvl1_complete[i][3]>0:
 	        lvl1_final.append(lvl1_complete[i])
 	#print len(lvl1_final)
-	lvl1=sorted(lvl1_final,key=lambda x:x[2],reverse=True)
-	#print lvl1
+	lvl1 = sorted(lvl1_final,key=lambda x:x[2],reverse=True)
 	
+	for i in lvl1:
+		if(i[2] != 0.0 ):
+			print i
 	lvl2_complete=[]
 	for ind_movie_index in range(len(lvl1)):
 	    watched_movie=lvl1[ind_movie_index][1]

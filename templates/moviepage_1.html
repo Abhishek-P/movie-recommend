@@ -16,7 +16,6 @@
 	{
 		console.log("setUser()");
 		val = $.post("/set/user",{"id": $("#user_id_input").val()},setUserDetails)
-		$("div#user_choice").attr({"hidden": true});
 		//console.log(val);
 		//console.log("here2");
 	}
@@ -71,7 +70,7 @@
 		</dl>
 	</div>
 	
-	<div class = "row " id = "user_choice">
+	<div class = "row well " id = "user_choice">
 		<span class = ""> Enter User Id ( 1 to 943 ): </span>
 		<input type = "number" id = "user_id_input" min = "1" max = "943"/>	
 		<input type = "button" id = "choose_user" value = "select" onclick = "setUser(event);"/>
@@ -80,10 +79,10 @@
 	<div class = "row" id = "sets" > 
 		
 		<ul class = "list-group col-xs-6" id = "candidate_set" hidden>
-		<h4>Candidate Set:</h4>
+		<h4 class = "display-1">Candidate Set:</h4>
 		</ul>
 		<dl class = "dl-horizontal list-group col-xs-6" id = "ranked_set" hidden>
-		<h4>Ranked Set - Scored</h4>
+		<h4 class = "display-1" >Ranked Set - Scored</h4>
 			<dt>Movie Id:</dt><dd>Score:</dd>
 		</dl>
 	</div>
