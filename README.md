@@ -1,11 +1,11 @@
 # movie-recommend
 ## Guide: Prof. Srinivas Murthy
-###Developers: Abhishek P, Akshay A Malpani, Bharath Kashyapa
+### Developers: Abhishek P, Akshay A Malpani, Bharath Kashyapa
 
 Youtube Style Movie Recommendation:
 An effort to adapt the youtube recommendation for a movie dataset
 
-###Legend:
+### Legend:
 
 corate_gen.py - generates corate matrix from user_movies
 
@@ -19,7 +19,7 @@ avg_corate_count.py - generates average corate count from 'movie_corate_matrix.p
 
 movie_count_display.py - displays movie,count and min,max,mean,variance
 
-####dumps/
+#### dumps/
 
 user_movies.pickle -  pickle of user vs movie list dict over 100k
 
@@ -31,6 +31,6 @@ movie_count.pickle -  the count of movies in the 100k
 
 movie_corate_matrix.pickle - pickle of corating symmetric matrix of movies
  
-####logs/
+#### logs/
 
 avg_corate_count.txt - result og avg_corate_count.py - contains average corate count per movie
