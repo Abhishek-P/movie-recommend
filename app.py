@@ -1,7 +1,7 @@
 from flask import Flask, request, Response, render_template
 from werkzeug.contrib.fixers import ProxyFix
-import json
 import os
+
 ON_HEROKU = os.environ.get('ON_HEROKU')
 if ON_HEROKU:
     # get the heroku port
@@ -44,6 +44,7 @@ def get_sets():
     sets = ranking_1.ranking(user_id);
     print sets[1]
     return encoder.encode(sets)
+
 
 app.wsgi_app = ProxyFix(app.wsgi_app)
 if __name__ == "__main__":
