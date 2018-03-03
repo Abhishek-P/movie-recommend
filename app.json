@@ -1,0 +1,9 @@
+{
+  "name": "Be Like Youtube",
+  "description": "Adapting youtube style of recommendation to a static movie database.",
+  "image": "heroku/python",
+  "keywords": ["python", "flask" ],
+  "environments": {
+    }
+  }
+}

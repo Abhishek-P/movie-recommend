@@ -1,3 +1,13 @@
+from flask import Flask, request, Response, render_template
+from werkzeug.contrib.fixers import ProxyFix
+import json
+import os
+ON_HEROKU = os.environ.get('ON_HEROKU')
+if ON_HEROKU:
+    # get the heroku port
+    port = int(os.environ.get('PORT', 17995))  # as per OP comments default is 17995
+else:
+    port = 5000
 from flask import *
 import pickle
 # import time
@@ -35,7 +45,7 @@ def get_sets():
     print sets[1]
     return encoder.encode(sets)
 
-
+app.wsgi_app = ProxyFix(app.wsgi_app)
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 1730))
     app.run(host="127.0.0.1", port=port, debug=True)

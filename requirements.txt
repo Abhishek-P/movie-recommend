@@ -1,0 +1,7 @@
+gunicorn==19.6.0
+Werkzeug==0.12.2
+nltk==3.2.4
+Jinja2==2.9.6
+Flask==0.12.2
+six==1.10.0
+itsdangerous==0.24
