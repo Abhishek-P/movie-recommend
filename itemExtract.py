@@ -26,33 +26,32 @@ import time
 import pickle
 
 start_time = time.time()
-items = dict()#the items dict
-lines = None #to contain the read data line by line
+items = dict()  # the items dict
+lines = None  # to contain the read data line by line
 
-genre_dict = {5 : "Unknown", 6 :"Action", 7 :"Adventure" , 8 : "Animation",
-              9 :"Children's", 10 : "Comedy", 11 : "Crime", 
-	      12: "Documentary", 13:"Drama" , 14 : "Fantasy" , 
-              15 : "Film-Noir",16: "Horror",17: "Musical", 18: "Mystery", 19: "Romance", 20: "Sci-Fi",
-              21 : "Thriller", 22 : "War", 23: "Western" }
-with open("u.item","r") as items_input:
-	lines = items_input.readlines()
-
+genre_dict = {5: "Unknown", 6: "Action", 7: "Adventure", 8: "Animation",
+              9: "Children's", 10: "Comedy", 11: "Crime",
+              12: "Documentary", 13: "Drama", 14: "Fantasy",
+              15: "Film-Noir", 16: "Horror", 17: "Musical", 18: "Mystery", 19: "Romance", 20: "Sci-Fi",
+              21: "Thriller", 22: "War", 23: "Western"}
+with open("source_data\u.item", "r") as items_input:
+    lines = items_input.readlines()
 
 for i in lines:
-	line  = i.split("|")
-	id = int(line[0])
-	items[id] = dict()
-	items[id]["name"] = line[1]
-	items[id]["release_date"] = line[2]
-	items[id]["v_release_date"] = line[3]
-	items[id]["url"] = line[4]
-	items[id]["genre"] = set()
-	for j in xrange(5,24):
-		if line[j] == "1":
-			items[id]["genre"].add(genre_dict[j])
-	
-with open("dumps/items.pickle","wb") as items_dump:
-	pickle.dump(items,items_dump)
-	
+    line = i.split("|")
+    id = int(line[0])
+    items[id] = dict()
+    items[id]["name"] = line[1]
+    items[id]["release_date"] = line[2]
+    items[id]["v_release_date"] = line[3]
+    items[id]["url"] = line[4]
+    items[id]["genre"] = set()
+    for j in xrange(5, 24):
+        if line[j] == "1":
+            items[id]["genre"].add(genre_dict[j])
+
+with open("dumps/items.pickle", "wb") as items_dump:
+    pickle.dump(items, items_dump)
+
 print len(items)
-print "Time:",time.time() - start_time
+print "Time:", time.time() - start_time

@@ -16,43 +16,43 @@ Generating the movie_count as list and pickling
 @author : Abhishek P, Bharath Kashyapa, Akshay A Malpani """
 import time
 import pickle
+
 start_time = time.time()
-file = open("u.data","r")
+file = open("source_data/u.data", "r")
 records = []
 for i in range(100000):
-	records.append(file.readline().rstrip().split("\t"));
-file2 = open("dumps/records.pickle","wb")
-pickle.dump(records,file2);
+    records.append(file.readline().rstrip().split("\t"));
+file2 = open("dumps/records.pickle", "wb")
+pickle.dump(records, file2);
 file2.close()
 
 # converting the strings to int, float
 for i in records:
-	i[0] = int(i[0])
-	i[1] = int(i[1])
-	i[2] = float(i[2])
+    i[0] = int(i[0])
+    i[1] = int(i[1])
+    i[2] = float(i[2])
 
 # the user vs movies list 
 user_movies = {}
 movie_count = [0 for x in range(1682)]
 for i in records:
-	if( i[0] not in user_movies):
-		user_movies[i[0]] = list()
-	user_movies[i[0]].append(i[1])
-	movie_count[i[1]-1] = movie_count[i[1]-1] + 1
-user_movies_dump = open("dumps/user_movies.pickle","wb")
-pickle.dump(user_movies,user_movies_dump)
+    if (i[0] not in user_movies):
+        user_movies[i[0]] = list()
+    user_movies[i[0]].append(i[1])
+    movie_count[i[1] - 1] = movie_count[i[1] - 1] + 1
+user_movies_dump = open("dumps/user_movies.pickle", "wb")
+pickle.dump(user_movies, user_movies_dump)
 user_movies_dump.close()
 
 with open("dumps/movie_count.pickle", "wb") as movie_count_dump:
-	pickle.dump(movie_count,movie_count_dump)
+    pickle.dump(movie_count, movie_count_dump)
 
-#generating the user vs movie matrix with 0 or ratings at user id, movie id
+# generating the user vs movie matrix with 0 or ratings at user id, movie id
 user_vs_movie = [[0 for x in range(1682)] for y in range(943)]
 for i in records:
-	user_vs_movie[i[0]-1][i[1]-1] = i[2]
+    user_vs_movie[i[0] - 1][i[1] - 1] = i[2]
 
-user_vs_movie_dump = open("dumps/user_vs_movie.pickle","wb")
-pickle.dump(user_vs_movie,user_vs_movie_dump)
+user_vs_movie_dump = open("dumps/user_vs_movie.pickle", "wb")
+pickle.dump(user_vs_movie, user_vs_movie_dump)
 user_vs_movie_dump.close()
-print "Time:",time.time() - start_time
-
+print "Time:", time.time() - start_time

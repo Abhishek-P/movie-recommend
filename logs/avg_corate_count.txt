@@ -1,3 +1,3 @@
 Max is 480 and min is 0
 Average co-rating count is 7
-Time: 9.31299996376
+Time: 7.18700003624
