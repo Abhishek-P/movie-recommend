@@ -34,3 +34,11 @@ movie_corate_matrix.pickle - pickle of corating symmetric matrix of movies
 #### logs/
 
 avg_corate_count.txt - result og avg_corate_count.py - contains average corate count per movie
+
+
+We will at some point of time simplify adn improve the depolyement process.
+For now app.py can be run as a flask server.
+Requirements are specified in requirements.txt
+
+####Happy to say it is also deployed at 
+http://movie-recommend.herokuapp.com 
